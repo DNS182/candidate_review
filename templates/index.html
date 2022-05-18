@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>JOB-REVIEWER-182</title>
+</head>
+<body>
+
+
+    <section>
+        <h1>APPLIED CANDIDATE LISTS</h1>
+        <div class="tbl-header">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>COUNTRY</th>
+                <th>APPLIED FOR</th>
+                <th>APPLIED ON</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                {% for z in candis %}
+              <tr>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.id}}</a></td>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Name}}</a></td>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Country}}</a></td>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Applied_for}}</a></td>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Applied_on}}</a></td>
+                {% if z.Status == 'REJECTED'%}
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:red' >{{z.Status}}</a></td>
+                {% elif z.Status == 'ACCEPTED'%}
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:green' >{{z.Status}}</a></td>
+                {% else %}
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:yellow' >{{z.Status}}</a></td>
+                {% endif %}
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+     
+    <script>
+
+        $(window).on("load resize ", function() {
+            var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+            $('.tbl-header').css({'padding-right':scrollWidth});
+          }).resize();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'detail.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>{{deta.Name}} Detail </title>
+</head>
+<body>
+  <div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{% static 'images/1.jpg' %}" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h5>
+                                {{deta.Name}}
+                            </h5>
+                            <h6>
+                                {{deta.Position}}
+                            </h6>
+                            <p class="proile-rating">Experience  : <span>{{deta.Experience}}</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active"  >About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                {% if deta.Status == 'ACCEPTED'%}
+                <img class="profile-edit-btn" name="btnAddMore" value="Edit Profile" src="{% static 'job/accept.jpg' %}" alt="">
+                {% elif deta.Status == 'REJECTED' %}
+                <img class="profile-edit-btn" name="btnAddMore" value="Edit Profile" src="{% static 'job/rejected.jpg' %}" alt="">
+                {% else %}
+                <img class="profile-edit-btn" name="btnAddMore" value="Edit Profile" src="{% static 'job/onhold.jpg' %}" alt="">
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>ADDRESS</p>
+                       {{deta.Country}}, Pokhara-25 Hemja<br/>
+                    <p>ACADEMIC DEGREE</p>
+                        {{deta.Degree}}<br/>
+                    <p>SKILLS</p>
+                    {{deta.Skills}}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Candidate Id</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{deta.pk}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{deta.Name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{deta.Email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>+{{deta.Contact}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Applied Role For</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{deta.Applied_for}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Applied On</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{deta.Applied_on}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Resume</label>
+                                    </div>
+                                    {% if deta.Resume  %}
+                                    <div class="col-md-6">
+                                       <p><a href="{{ deta.Resume.url }}">UPLOADED(Click To View)</a></p> 
+                                    </div>
+                                    {% else %}
+                                    <div class="col-md-6">
+                                       <p>NOT YET UPLOADED</p>
+                                    </div>
+                                    {% endif %}
+                            </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> 
+           
+</div>
+</body>
+</html>
