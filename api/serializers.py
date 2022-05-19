@@ -1,7 +1,9 @@
-from candidate.models import Candidate
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from candidate.models import Candidate
 
-class CandidateSerializer(serializers.ModelSerializer):
+
+class CandidateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Candidate
-        fields = ['Name','Contact' , 'Email', 'Country','Degree' , 'Position' , 'Experience' , 'Applied_for' , 'Skills']
+        exclude = ('Resume', 'Applied_on' , 'Status' )

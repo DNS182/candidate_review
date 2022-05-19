@@ -35,7 +35,7 @@
               <tr>
                 <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.id}}</a></td>
                 <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Name}}</a></td>
-                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Country}}</a></td>
+                <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Address}}</a></td>
                 <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Applied_for}}</a></td>
                 <td><a href = '{% url "detail" z.pk %}' style ='text-decoration:none; color:white' >{{z.Applied_on}}</a></td>
                 {% if z.Status == 'REJECTED'%}
