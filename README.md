@@ -1,2 +1,2 @@
 # Job application review
-# reviewer-182.herokuapp.com
+# https://reviewer-182.herokuapp.com/
